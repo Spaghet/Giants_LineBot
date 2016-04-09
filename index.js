@@ -63,7 +63,7 @@ function sendRequest(toUser, input){
     },
     method: "POST",
   };
-  var body = qs.stringify({
+  var body = JSON.toString({
     to: [toUser],
     toChannel: channelId,
     eventType: 138311608800106203,
