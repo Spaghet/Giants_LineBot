@@ -52,11 +52,10 @@ res.end("");
 
 function sendRequest(toUser, input){
   var options = {
-    host: "goonytoons.com",
-    port: 8080,
+    host: "trialbot-api.line.me",
     path: "/v1/events",
     headers: {
-      "content-type": "application/json; charser=UTF-8",
+      "content-type": "application/json; charset=UTF-8",
       "X-Line-ChannelID": "1462997838",
       "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
       "X-Line-Trusted-User-With-ACL": "ua9f4a868cf921b7f84075a766320b3ca"
@@ -84,7 +83,6 @@ var req = http.request(options, function(res) {
   });
 });
 req.write(body);
-console.log(JSON.stringify(req.headers));
 req.end();
 
 };
