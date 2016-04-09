@@ -52,7 +52,7 @@ res.end("");
 
 function sendRequest(toUser, input){
   var options = {
-    host: "trialbot-api.line.me",
+    host: "125.2.148.106:8080",
     path: "/v1/events",
     headers: {
       "content-type": "application/json; charser=UTF-8",
@@ -83,7 +83,6 @@ var req = http.request(options, function(res) {
   });
 });
 req.write(body);
-console.log(JSON.stringify(req.url));
 req.end();
 
 };
