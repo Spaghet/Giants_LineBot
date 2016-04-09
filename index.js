@@ -11,8 +11,9 @@ const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 function handleRequest(request, response){
   if(request.method == "POST"){
     request.on('data', function(data){
+      console.log("POST");
       console.log(request.headers);
-      console.log(data);
+      console.log(data.toString());
       response.end("hoge");
     });
 }
@@ -54,5 +55,5 @@ function sendRequest(){
 //Lets start our server
 server.listen(PORT, function(){
     //Callback triggered when server is successfully listening. Hurray!
-    //console.log("Server listening on: http://localhost:%s", PORT);
+    console.log("Server listening on: http://localhost:%s", PORT);
 });
