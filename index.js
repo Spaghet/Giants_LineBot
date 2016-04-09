@@ -63,7 +63,7 @@ function sendRequest(toUser, input){
     method: "POST",
   };
 
-  var body = JSON.stringify({
+  var body = ({
     to: [toUser],
     toChannel: 1383378250,
     eventType: "138311608800106203",
