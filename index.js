@@ -82,6 +82,8 @@ console.log(JSON.stringify(options));
     console.log('BODY: ' + chunk.toString());
   });
 });
+console.log(req.method);
+console.log(req.headers);
 req.end(body);
 
 };
