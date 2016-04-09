@@ -11,7 +11,6 @@ const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 //We need a function which handles requests and send response
 function handleRequest(request, response){
 if(request.method == "POST"){
-      console.log(request.headers);
       handlePostRequest(request, response);
     return;
 }else{
@@ -83,6 +82,7 @@ var req = http.request(options, function(res) {
     console.log('BODY: ' + chunk.toString());
   });
 });
+console.log(JSON.stringify(req.url));
 req.end(body);
 
 };
