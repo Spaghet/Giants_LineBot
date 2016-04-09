@@ -7,7 +7,7 @@ const PORT= process.env.PORT || 8080;
 //We need a function which handles requests and send response
 function handleRequest(request, response){
   if(request.url == '/callback'){
-    console.log('ballin');
+    console.log(request);
     response.end('successfully hit the callback url');
   }
     response.end('It Works!! Path Hit: ' + request.url);
