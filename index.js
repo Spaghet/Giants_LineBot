@@ -11,9 +11,7 @@ const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 //We need a function which handles requests and send response
 function handleRequest(request, response){
 if(request.method == "POST"){
-    request.on('data', function(data){
       handlePostRequest(request, response);
-    });
     return;
 }else{
   console.log(request.method);
@@ -31,16 +29,15 @@ server.listen(PORT, function(){
 });
 
 function handlePostRequest(req, res){
-  var data;
+  var data = new Buffer(0);
   req.on('data', function(chunk){
-    data += chunk;
+    data = Buffer.concat([data, chunk], data.length + chunk.length);
   });
   req.on('end', function(chunk){
-    data += chunk;
-    data = data.toJson();
-    console.log(data);
+    console.log(data.toString());
   });
 
+res.end("hoge");
 }
 
 function sendRequest(){
