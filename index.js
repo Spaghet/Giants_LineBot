@@ -64,7 +64,7 @@ function sendRequest(toUser, input){
   };
   var body = qs.stringify({
     to: toUser,
-    toChannel: channelId
+    toChannel: channelId,
     eventType: 138311608800106203,
     content: {
       toType: 1,
