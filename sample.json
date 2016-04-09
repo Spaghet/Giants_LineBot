@@ -1,0 +1,24 @@
+{"result":[
+  {"content":
+    {
+      "toType":1,
+      "createdTime":1460193855130,
+      "from":"udc4c94af0cf037a1bb9876e9d7023ecd",
+      "location":null,
+      "id":"4147995091753",
+      "to":["ua9f4a868cf921b7f84075a766320b3ca"],
+      "text":"あ",
+      "contentMetadata":{"AT_RECV_MODE":"2"},
+      "deliveredTime":0,
+      "contentType":1,
+      "seq":null
+    },
+    "createdTime":1460193855149,
+    "eventType":"138311609000106303",
+    "from":"u206d25c2ea6bd87c17655609a1c37cb8",
+    "fromChannel":1341301815,
+    "id":"WB1520-3344699315",
+    "to":["ua9f4a868cf921b7f84075a766320b3ca"],
+    "toChannel":1462997838
+    }
+]}

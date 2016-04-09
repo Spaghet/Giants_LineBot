@@ -35,13 +35,22 @@ function handlePostRequest(req, res){
   });
   req.on('end', function(chunk){
     data = JSON.parse(data.toString());
-    process.stdout.write(data.text);
+    var contentType = data.result[0].content.contentType;
+    var to = data.result[0].content.from;
+    if(contentType == 1){
+      var text = data.result[0].content.text;
+      sendRequest(to, text);
+    }else{
+      var text = "ASJKALJDKWALDKA";
+      sendRequest(to, text);
+    }
+
   });
 
 res.end("hoge");
 }
 
-function sendRequest(){
+function sendRequest(toUser, input){
   var options = {
     host: "trialbot-api.line.me",
     path: "/v1/events",
@@ -54,7 +63,14 @@ function sendRequest(){
     method: "POST",
   };
   var body = qs.stringify({
-    hoge: "hogehoge"
+    to: toUser,
+    toChannel: channelId
+    eventType: 138311608800106203,
+    content: {
+      toType: 1,
+      contentType: 1,
+      text: input
+    }
   });
 
   http.request(options, function(res) {
