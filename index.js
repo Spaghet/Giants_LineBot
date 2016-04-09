@@ -8,12 +8,9 @@ const channelId = "1462997838";
 const channelSecret = "0e6392a115a2d65089479eb5334de457";
 const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 
-const echoIP = "106.161.230.29";
-
 //We need a function which handles requests and send response
 function handleRequest(request, response){
 if(request.method == "POST"){
-    console.log("POST");
       handlePostRequest(request, response);
     return;
 }else{
@@ -67,7 +64,7 @@ function sendRequest(toUser, input){
     method: "POST",
   };
   var body = qs.stringify({
-    to: toUser,
+    to: [toUser],
     toChannel: channelId,
     eventType: 138311608800106203,
     content: {
@@ -76,24 +73,13 @@ function sendRequest(toUser, input){
       text: input
     }
   });
-
+console.log(body);
   http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
   res.setEncoding('utf8');
   res.on('data', function (chunk) {
-    console.error('BODY: ' + chunk.toString());
-    remoteLog(chunk.toString());
+    console.log('BODY: ' + chunk.toString());
   });
 }).end(body);
 };
-function remoteLog(data){
-  var data_ = new Buffer(data);
-  var options = {
-    host: echoIP,
-    port: 8080,
-    method: "POST"
-  };
-  http.request(options, function(res){
-  }).end(data_);
-}
