@@ -1,9 +1,16 @@
 var https = require('https');
+var url = require('url');
+
+const fixieUrl = url.parse(process.env.FIXIE_URL || "http://fixie:qO8t5jn6Ahvz6ly@velodrome.usefixie.com:80");
+const requestUrl = url.parse("https://trialbot-api.line.me/v1/events");
 
 var options = {
-  "hostname": "trialbot-api.line.me",
-  "path": "/v1/events",
+  "hostname": fixieUrl.hostname,
+  "port": fixieUrl.port,
+  "path": requestUrl.href,
   "headers": {
+    "Host": requestUrl.host,
+    "Proxy-Authorization": "Basic " + new Buffer(fixieUrl.auth).toString('base64'),
     "Content-type": "application/json; charset=UTF-8",
     "X-Line-ChannelID": "1462997838",
     "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
