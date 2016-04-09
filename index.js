@@ -55,7 +55,7 @@ function sendRequest(toUser, input){
     host: "trialbot-api.line.me",
     path: "/v1/events",
     headers: {
-      "Content-type": "application/json; charser=UTF-8",
+      "content-type": "application/json; charser=UTF-8",
       "X-Line-ChannelID": "1462997838",
       "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
       "X-Line-Trusted-User-With-ACL": "ua9f4a868cf921b7f84075a766320b3ca"
@@ -82,7 +82,8 @@ var req = http.request(options, function(res) {
     console.log('BODY: ' + chunk.toString());
   });
 });
+req.write(body);
 console.log(JSON.stringify(req.url));
-req.end(body);
+req.end();
 
 };
