@@ -11,6 +11,7 @@ const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 //We need a function which handles requests and send response
 function handleRequest(request, response){
 if(request.method == "POST"){
+      console.log(req.headers);
       handlePostRequest(request, response);
     return;
 }else{
@@ -71,9 +72,6 @@ function sendRequest(toUser, input){
     }
   });
 
-console.log(body || "body is undefined");
-console.log(JSON.stringify(options.headers));
-
 var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
@@ -82,8 +80,6 @@ var req = http.request(options, function(res) {
     console.log('BODY: ' + chunk.toString());
   });
 });
-console.log(req.method);
-console.log(JSON.stringify(req));
 req.end(body);
 
 };
