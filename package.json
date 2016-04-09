@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Spaghet/Giants_LineBot/issues"
   },
-  "homepage": "https://github.com/Spaghet/Giants_LineBot#readme"
+  "homepage": "https://github.com/Spaghet/Giants_LineBot#readme",
+  "dependencies": {
+    "request": "^2.70.0"
+  }
 }

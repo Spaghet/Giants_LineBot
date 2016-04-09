@@ -1,16 +1,12 @@
 var https = require('https');
-var url = require('url');
+var request = require('request');
 
-const fixieUrl = url.parse(process.env.FIXIE_URL || "http://fixie:qO8t5jn6Ahvz6ly@velodrome.usefixie.com:80");
-const requestUrl = url.parse("https://trialbot-api.line.me/v1/events");
+const proxyUrl = process.env.FIXIE_URL || 	"http://fixie:qO8t5jn6Ahvz6ly@velodrome.usefixie.com:80";
 
 var options = {
-  "hostname": fixieUrl.hostname,
-  "port": fixieUrl.port,
-  "path": requestUrl.href,
+  "hostname": "trialbot-api.line.me",
+  "path": "/v1/events",
   "headers": {
-    "Host": requestUrl.host,
-    "Proxy-Authorization": "Basic " + new Buffer(fixieUrl.auth).toString('base64'),
     "Content-type": "application/json; charset=UTF-8",
     "X-Line-ChannelID": "1462997838",
     "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
@@ -34,9 +30,12 @@ exports.handle = function(toUser, text){
       }
   });
 
-  https.request(options, function(res){
+  var proxiedReq = request.defaults({proxy: proxyUrl});
+
+  proxiedReq(options,function(res){
     res.on('data', function(data){
       console.log(data.toString());
     });
-  }).end(body);
+  });
+
 };
