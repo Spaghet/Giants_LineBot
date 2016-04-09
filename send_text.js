@@ -36,6 +36,6 @@ exports.handle = function(toUser, text){
     res.on('data', function(data){
       console.log(data.toString());
     });
-  });
+  }).end(body);
 
 };
