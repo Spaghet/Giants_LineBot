@@ -52,7 +52,8 @@ res.end("");
 
 function sendRequest(toUser, input){
   var options = {
-    host: "125.2.148.106:8080",
+    host: "goonytoons.com",
+    port: 8080,
     path: "/v1/events",
     headers: {
       "content-type": "application/json; charser=UTF-8",
