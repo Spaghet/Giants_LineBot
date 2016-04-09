@@ -27,7 +27,7 @@ exports.handle = function(toUser, text){
       "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
       "X-Line-Trusted-User-With-ACL": "ua9f4a868cf921b7f84075a766320b3ca"
     },
-    "method": "POST"
+    "method": "POST",
     "body": body
   };
 
