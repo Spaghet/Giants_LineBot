@@ -1,5 +1,6 @@
 //Lets require/import the HTTP module
 var http = require('http');
+var qs = require('querystring');
 
 //Lets define a port we want to listen to
 const PORT= process.env.PORT || 8080;
@@ -18,42 +19,42 @@ function handleRequest(request, response){
     });
 }
 
-  if(request.url == '/callback'){
-    var reqString = JSON.parse(request);
-    console.log(reqString);
-    response.end('successfully hit the callback url');
-  }else{
-    response.end('It Works!! Path Hit: ' + request.url);
-  }
+console.log(request.method);
+res.end("You didn't POST");
 }
 
 //Create a server
 var server = http.createServer(handleRequest);
 
+//Lets start our server
+server.listen(PORT, function(){
+    //Callback triggered when server is successfully listening. Hurray!
+    console.log("Server listening on: http://localhost:%s", PORT);
+    sendRequest();
+});
+
 function sendRequest(){
   var options = {
-    host: "giants-linebot.heroku.com",
-    port: PORT,
+    host: "trialbot-api.line.me",
+    path: "/v1/events",
     headers: {
       "Content-Type": "application/json; charser=UTF-8",
       "X-Line-ChannelID": channelId,
       "X-Line-ChannelSecret": channelSecret,
       "X-Line-Trusted-User-With-ACL": MID
     },
-    method: "POST"
+    method: "POST",
   };
+  var body = qs.stringify({
+    hoge: "hogehoge"
+  });
+
   http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
   res.setEncoding('utf8');
   res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk);
+    console.log('BODY: ' + chunk.toString());
   });
-}).end();
+}).end(body);
 };
-
-//Lets start our server
-server.listen(PORT, function(){
-    //Callback triggered when server is successfully listening. Hurray!
-    console.log("Server listening on: http://localhost:%s", PORT);
-});
