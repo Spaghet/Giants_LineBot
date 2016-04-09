@@ -3,15 +3,15 @@ var http = require('http');
 
 //Lets define a port we want to listen to
 const PORT= process.env.PORT || 8080;
-const channelId = 1462997838;
-const channelSecret = 0e6392a115a2d65089479eb5334de457;
-const MID = ua9f4a868cf921b7f84075a766320b3ca;
+const channelId = "1462997838";
+const channelSecret = "0e6392a115a2d65089479eb5334de457";
+const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 
 //We need a function which handles requests and send response
 function handleRequest(request, response){
   if(request.method == "POST"){
     request.on('data', function(data){
-      console.log(request.headers); 
+      console.log(request.headers);
       console.log(data);
       response.end("hoge");
     });
@@ -34,10 +34,10 @@ function sendRequest(){
     host: "giants-linebot.heroku.com",
     port: PORT,
     headers: {
-      Content-Type: "application/json; charser=UTF-8",
-      X-Line-ChannelID: channelId,
-      X-Line-ChannelSecret: channelSecret,
-      X-Line-Trusted-User-With-ACL: MID
+      "Content-Type": "application/json; charser=UTF-8",
+      "X-Line-ChannelID": channelId,
+      "X-Line-ChannelSecret": channelSecret,
+      "X-Line-Trusted-User-With-ACL": MID
     },
     method: "POST"
   };
