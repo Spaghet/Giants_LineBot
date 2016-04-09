@@ -73,7 +73,7 @@ function sendRequest(toUser, input){
       text: input
     }
   });
-console.log(body);
+console.log(body || "body is undefined");
   http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
