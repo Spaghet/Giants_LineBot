@@ -73,12 +73,15 @@ function sendRequest(toUser, input){
     }
   });
 console.log(body || "body is undefined");
-  http.request(options, function(res) {
+  var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
   res.setEncoding('utf8');
   res.on('data', function (chunk) {
     console.log('BODY: ' + chunk.toString());
   });
-}).end(body);
+});
+console.log(req.headers);
+req..end(body);
+
 };

@@ -25,11 +25,11 @@
 
 {
   "to":["ub6455048bfa2811a05ea9729bb6e0b47"],
-  "toChannel":"1462997838",
-  "eventType":138311608800106200,
+  "toChannel":1462997838,
+  "eventType":"138311608800106203",
   "content":{
     "toType":1,
     "contentType":1,
     "text":"hogehoge"
   }
-} 
+}
