@@ -4,7 +4,7 @@ var qs = require('querystring');
 
 //Lets define a port we want to listen to
 const PORT= process.env.PORT || 5000;
-const channelId = "1462997838";
+const channelId = 1462997838;
 const channelSecret = "0e6392a115a2d65089479eb5334de457";
 const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 
@@ -35,7 +35,6 @@ function handlePostRequest(req, res){
   });
   req.on('end', function(chunk){
     data = JSON.parse(data.toString());
-    console.log(data);
     var contentType = data.result[0].content.contentType;
     var to = data.result[0].content.from;
     if(contentType == 1){
@@ -66,7 +65,7 @@ function sendRequest(toUser, input){
   var body = JSON.stringify({
     to: [toUser],
     toChannel: channelId,
-    eventType: 138311608800106203,
+    eventType: "138311608800106203",
     content: {
       toType: 1,
       contentType: 1,
