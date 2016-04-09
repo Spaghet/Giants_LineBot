@@ -3,10 +3,12 @@ var http = require('http');
 var qs = require('querystring');
 
 //Lets define a port we want to listen to
-const PORT= process.env.PORT || 8080;
+const PORT= process.env.PORT || 5000;
 const channelId = "1462997838";
 const channelSecret = "0e6392a115a2d65089479eb5334de457";
 const MID = "ua9f4a868cf921b7f84075a766320b3ca";
+
+const echoIP = "106.161.230.29";
 
 //We need a function which handles requests and send response
 function handleRequest(request, response){
@@ -79,6 +81,17 @@ function sendRequest(toUser, input){
   res.setEncoding('utf8');
   res.on('data', function (chunk) {
     console.error('BODY: ' + chunk.toString());
+    remoteLog(chunk.toString());
   });
 }).end(body);
 };
+function remoteLog(data){
+  var data_ = new Buffer(data);
+  var options = {
+    host: echoIP,
+    port: 8080,
+    method: "POST"
+  };
+  http.request(options, function(res){
+  }).end(data_);
+}
