@@ -46,7 +46,7 @@ function handlePostRequest(req, res){
       var text = "ASJKALJDKWALDKA";
       sendRequest(to, text);
     }
-res.writeHead(200, {Content-type: "text/plain"});
+res.writeHead(200, {"Content-type": "text/plain"});
 res.end("");
   });
 }
