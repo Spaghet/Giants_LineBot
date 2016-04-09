@@ -1,7 +1,7 @@
 //Lets require/import the HTTP module
 var http = require('http');
 var qs = require('querystring');
-var send = require('./send_text');
+var send = require('./send_text').handle;
 
 //Lets define a port we want to listen to
 const PORT= process.env.PORT || 5000;
