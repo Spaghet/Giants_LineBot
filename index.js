@@ -29,6 +29,7 @@ server.listen(PORT, function(){
     console.log("Server listening on:", PORT);
 });
 
+//Handle stuff
 function handlePostRequest(req, res){
   var data = new Buffer(0);
   req.on('data', function(chunk){
@@ -45,6 +46,8 @@ function handlePostRequest(req, res){
       var text = "ASJKALJDKWALDKA";
       sendRequest(to, text);
     }
+res.writeHead(200, {Content-type: "text/plain"});
+res.end("");
   });
 }
 
@@ -63,7 +66,7 @@ function sendRequest(toUser, input){
 
   var body = JSON.stringify({
     to: [toUser],
-    toChannel: channelId,
+    toChannel: 1383378250,
     eventType: "138311608800106203",
     content: {
       toType: 1,
