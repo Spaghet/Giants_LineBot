@@ -63,7 +63,7 @@ function sendRequest(toUser, input){
     method: "POST",
   };
 
-  var body = ({
+  var body = JSON.stringify({
     to: [toUser],
     toChannel: 1383378250,
     eventType: "138311608800106203",
@@ -73,7 +73,7 @@ function sendRequest(toUser, input){
       text: input
     }
   });
-
+console.log(toUser);
 var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
