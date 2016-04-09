@@ -13,6 +13,7 @@ const echoIP = "106.161.230.29";
 //We need a function which handles requests and send response
 function handleRequest(request, response){
 if(request.method == "POST"){
+    console.log("POST");
       handlePostRequest(request, response);
     return;
 }else{
@@ -37,6 +38,7 @@ function handlePostRequest(req, res){
   });
   req.on('end', function(chunk){
     data = JSON.parse(data.toString());
+    console.log(data);
     var contentType = data.result[0].content.contentType;
     var to = data.result[0].content.from;
     if(contentType == 1){
