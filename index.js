@@ -11,8 +11,8 @@ const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 //We need a function which handles requests and send response
 function handleRequest(request, response){
   if(request.method == "POST"){
+    console.log("POST");
     request.on('data', function(data){
-      console.log("POST");
       console.log(request.headers);
       console.log(data.toString());
       response.end("hoge");
