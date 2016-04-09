@@ -78,7 +78,7 @@ function sendRequest(toUser, input){
   console.log('HEADERS: ' + JSON.stringify(res.headers));
   res.setEncoding('utf8');
   res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk.toString());
+    console.error('BODY: ' + chunk.toString());
   });
 }).end(body);
 };
