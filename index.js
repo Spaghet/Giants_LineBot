@@ -44,10 +44,7 @@ function handlePostRequest(req, res){
       var text = "ASJKALJDKWALDKA";
       sendRequest(to, text);
     }
-
   });
-
-res.end("hoge");
 }
 
 function sendRequest(toUser, input){
@@ -56,9 +53,9 @@ function sendRequest(toUser, input){
     path: "/v1/events",
     headers: {
       "Content-type": "application/json; charser=UTF-8",
-      "X-Line-ChannelID": ""+channelId,
-      "X-Line-ChannelSecret": channelSecret,
-      "X-Line-Trusted-User-With-ACL": MID
+      "X-Line-ChannelID": "1462997838",
+      "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
+      "X-Line-Trusted-User-With-ACL": "ua9f4a868cf921b7f84075a766320b3ca"
     },
     method: "POST",
   };
@@ -77,7 +74,7 @@ function sendRequest(toUser, input){
 console.log(body || "body is undefined");
 console.log(JSON.stringify(options.headers));
 
-  var req = http.request(options, function(res) {
+var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
   res.setEncoding('utf8');
