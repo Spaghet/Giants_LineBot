@@ -83,7 +83,7 @@ var req = http.request(options, function(res) {
   });
 });
 console.log(req.method);
-console.log(req.headers);
+console.log(JSON.stringify(req));
 req.end(body);
 
 };
