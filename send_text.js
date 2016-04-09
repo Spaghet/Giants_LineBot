@@ -18,7 +18,7 @@ var options = {
 
 
 exports.handle = function(toUser, text){
-
+console.log(proxyUrl);
   var body = JSON.stringify({
     "to": [toUser],
     "toChannel": 1383378250,
@@ -33,6 +33,9 @@ exports.handle = function(toUser, text){
   var proxiedReq = request.defaults({proxy: proxyUrl});
 
   proxiedReq.post(options, function(err, httpRes, body){
+    if(err){
+      console.log(err);
+    }
     console.log(body);
   });
 
