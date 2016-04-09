@@ -84,6 +84,7 @@ var req = http.request(options, function(res) {
   });
 });
 req.write(body);
+console.log(JSON.stringify(req.headers));
 req.end();
 
 };
