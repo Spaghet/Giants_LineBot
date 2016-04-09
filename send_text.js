@@ -4,8 +4,7 @@ var request = require('request');
 const proxyUrl = process.env.FIXIE_URL || 	"http://fixie:qO8t5jn6Ahvz6ly@velodrome.usefixie.com:80";
 
 var options = {
-  "hostname": "trialbot-api.line.me",
-  "path": "/v1/events",
+  "url": "https://trialbot-api.line.me/v1/events",
   "headers": {
     "Content-type": "application/json; charset=UTF-8",
     "X-Line-ChannelID": "1462997838",
