@@ -56,7 +56,7 @@ function sendRequest(toUser, input){
     path: "/v1/events",
     headers: {
       "Content-Type": "application/json; charser=UTF-8",
-      "X-Line-ChannelID": channelId,
+      "X-Line-ChannelID": ""+channelId,
       "X-Line-ChannelSecret": channelSecret,
       "X-Line-Trusted-User-With-ACL": MID
     },
@@ -73,6 +73,7 @@ function sendRequest(toUser, input){
     }
   });
 console.log(body || "body is undefined");
+console.log(JSON.stringify(options));
   var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
@@ -81,7 +82,6 @@ console.log(body || "body is undefined");
     console.log('BODY: ' + chunk.toString());
   });
 });
-console.log(req.headers);
 req.end(body);
 
 };
