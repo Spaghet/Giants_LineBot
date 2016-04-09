@@ -32,10 +32,8 @@ exports.handle = function(toUser, text){
 
   var proxiedReq = request.defaults({proxy: proxyUrl});
 
-  proxiedReq(options,function(res){
-    res.on('data', function(data){
-      console.log(data.toString());
-    });
+  proxiedReq(options,function(er,res,body){
+      console.log(body.toString());
   }).end(body);
 
 };
