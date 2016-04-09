@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 5000;
 
 var handler = function(event, context) {
     console.log('Received event:', JSON.stringify(event.body, null, 2));
-    var msg = event.result[0];
+    var msg = event.body.result[0];
     var data = JSON.stringify({
       to: [msg.content.from.toString()],
       toChannel: 1383378250,
