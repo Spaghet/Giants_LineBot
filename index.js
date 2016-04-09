@@ -34,6 +34,7 @@ function handlePostRequest(req, res){
     data = Buffer.concat([data, chunk], data.length + chunk.length);
   });
   req.on('end', function(chunk){
+    console.log(req.headers);
     console.log(data.toString());
   });
 
