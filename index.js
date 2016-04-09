@@ -11,16 +11,17 @@ const MID = "ua9f4a868cf921b7f84075a766320b3ca";
 //We need a function which handles requests and send response
 function handleRequest(request, response){
   if(request.method == "POST"){
-    console.log("POST");
+    console.log(request.method);
     request.on('data', function(data){
       console.log(request.headers);
       console.log(data.toString());
       response.end("hoge");
     });
+    return;
 }
 
 console.log(request.method);
-res.end("You didn't POST");
+response.end("You didn't POST");
 }
 
 //Create a server
@@ -29,8 +30,7 @@ var server = http.createServer(handleRequest);
 //Lets start our server
 server.listen(PORT, function(){
     //Callback triggered when server is successfully listening. Hurray!
-    console.log("Server listening on: http://localhost:%s", PORT);
-    sendRequest();
+    console.log("Server listening on:", PORT);
 });
 
 function sendRequest(){
