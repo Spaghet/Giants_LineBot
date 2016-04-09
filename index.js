@@ -55,13 +55,14 @@ function sendRequest(toUser, input){
     host: "trialbot-api.line.me",
     path: "/v1/events",
     headers: {
-      "Content-Type": "application/json; charser=UTF-8",
+      "Content-type": "application/json; charser=UTF-8",
       "X-Line-ChannelID": ""+channelId,
       "X-Line-ChannelSecret": channelSecret,
       "X-Line-Trusted-User-With-ACL": MID
     },
     method: "POST",
   };
+
   var body = JSON.stringify({
     to: [toUser],
     toChannel: channelId,
@@ -72,8 +73,10 @@ function sendRequest(toUser, input){
       text: input
     }
   });
+
 console.log(body || "body is undefined");
-console.log(JSON.stringify(options));
+console.log(JSON.stringify(options.headers));
+
   var req = http.request(options, function(res) {
   console.log('STATUS: ' + res.statusCode);
   console.log('HEADERS: ' + JSON.stringify(res.headers));
@@ -84,6 +87,6 @@ console.log(JSON.stringify(options));
 });
 console.log(req.method);
 console.log(req.headers);
-req.end("hoooos");
+req.end(body);
 
 };
