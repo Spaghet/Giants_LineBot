@@ -76,7 +76,7 @@ function play(word){
     send.sticker(id, Math.round(Math.random() * 20));
     return;
   }
-  send.text(content.from, scripts[counter]);
+  send.text(id, scripts[counter]);
 }
 
 exports.handleContent = function(content){
