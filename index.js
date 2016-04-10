@@ -64,6 +64,6 @@ function handleMessage(content){
     send.text(content.from, content.text);
     return;
   }else{
-    send.text(content.from, "Spooked Ya!");
+    send.image(content.from, "https://i.ytimg.com/vi/4mwJtAfFwlc/maxresdefault.jpg", null);
   }
 }
