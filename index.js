@@ -38,7 +38,7 @@ function handlePostRequest(req, res){
   req.on('end', function(chunk){
     data = Buffer.concat([data, chunk], data.length + chunk.length);
     data = JSON.parse(data.toString());
-    console.log(data.result[0].content.text);
+    console.log(data);
     handleJson(data);
   });
 res.writeHead(200, {"Content-type": "text/plain"});
