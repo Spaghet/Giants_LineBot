@@ -1,3 +1,4 @@
+'use strict';
 //Lets require/import the HTTP module
 var http = require('http');
 var qs = require('querystring');
@@ -38,10 +39,9 @@ function handlePostRequest(req, res){
   req.on('end', function(chunk){
     data = JSON.parse(data.toString());
     handleJson(data);
-  }
+  });
 res.writeHead(200, {"Content-type": "text/plain"});
 res.end("");
-  });
 }
 
 function handleJson(lineData){
@@ -53,12 +53,3 @@ function handleJson(lineData){
     }
   }
 }
-
-var contentType = data.result[0].content.contentType;
-var to = data.result[0].content.from;
-if(contentType == 1){
-  var text = data.result[0].content.text;
-  sendText(to, text);
-}else{
-  var text = "ASJKALJDKWALDKA";
-  sendText(to, text);
