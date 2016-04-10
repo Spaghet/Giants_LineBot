@@ -64,12 +64,7 @@ function handleMessage(content){
     send.text(content.from, content.text);
     return;
   }else{
-    send.image(content.from, "https://i.ytimg.com/vi/4mwJtAfFwlc/maxresdefault.jpg", "http://blogs.nature.com/news/files/elections%20small.JPG");
-    for(let i = 1; i <= 430; i++){
-      if(i == 22) i = 100;
-      if(i == 140) i = 401;
-    send.sticker(content.from, i+"");
-    }
-
+    send.image(content.from, "https://pbs.twimg.com/media/Bus5_vzCQAEN4z5.jpg", "https://41.media.tumblr.com/024585fba025c9bcdde9e26fc943e9fa/tumblr_nwsj4msQIJ1uo43aqo3_250.png");
+  }
   }
 }
