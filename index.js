@@ -16,7 +16,7 @@ if(request.method == "POST"){
     handlePostRequest(request, response);
     return;
 }else if(request.method == "PUT"){
-
+  curlScript();
 }else{
   console.log(request.method);
   response.end("You didn't POST");
