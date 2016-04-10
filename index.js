@@ -5,6 +5,7 @@ var qs = require('querystring');
 var send = require('./send');
 var handleContent = require('./scripted_fsm').completeScript;
 var curlScript = require('./scripted_fsm').curl;
+var resetScript = require('./scripted_fsm').reset;
 var CONST = require('./const').const;
 
 //Lets define a port we want to listen to
@@ -16,6 +17,12 @@ if(request.method == "POST"){
     handlePostRequest(request, response);
     return;
 }else if(request.method == "PUT"){
+  request.on('data', function(chunk){
+    if(chunk.toString() == "reset"){
+      resetScript();
+      return;
+    }
+  });
   curlScript();
   response.end("hogehoge");
 }else{
