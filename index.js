@@ -67,4 +67,3 @@ function handleMessage(content){
     send.image(content.from, "https://pbs.twimg.com/media/Bus5_vzCQAEN4z5.jpg", "https://41.media.tumblr.com/024585fba025c9bcdde9e26fc943e9fa/tumblr_nwsj4msQIJ1uo43aqo3_250.png");
   }
   }
-}
