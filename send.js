@@ -52,6 +52,7 @@ exports.image = function(toUser, imageUrl, previewUrl){
     "previewImageUrl":previewUrl
   }
 };
+body = JSON.stringify(body);
   send(body);
 }
 exports.sticker = function(toUser){
@@ -69,5 +70,6 @@ exports.sticker = function(toUser){
     }
   }
 };
+body = JSON.stringify(body);
 send(body);
 }
