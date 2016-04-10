@@ -64,7 +64,7 @@ function handleMessage(content){
     send.text(content.from, content.text);
     return;
   }else{
-    send.image(content.from, "https://i.ytimg.com/vi/4mwJtAfFwlc/maxresdefault.jpg", null);
+    send.image(content.from, "https://i.ytimg.com/vi/4mwJtAfFwlc/maxresdefault.jpg", "http://blogs.nature.com/news/files/elections%20small.JPG");
     send.sticker(content.from);
   }
 }
