@@ -65,8 +65,8 @@ switch(typeof scripts[counter]){
     timeout = scripts[counter];
     busy = true;
     setTimeout(function(){
-      send.text(content.from, scripts[counter]);
       counter++;
+      send.text(content.from, scripts[counter]);
       busy = false;
     }, timeout);
   break;
