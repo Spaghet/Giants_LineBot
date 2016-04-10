@@ -44,7 +44,7 @@ var scripts = [
 
 var counter = 0;
 var busy = false;
-var id = "";
+var id = "udc4c94af0cf037a1bb9876e9d7023ecd";
 
 exports.completeScript = function(content){
   id = content.from;
