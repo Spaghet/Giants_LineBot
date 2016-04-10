@@ -48,6 +48,21 @@ exports.completeScript = function(content){
 if(busy){
   return;
 }
+
+//if it's a timeout, return early
+var timeout;
+if(typeof scripts[counter] == "number"){
+    timeout = scripts[counter]; //element was time
+    busy = true;
+    setTimeout(function(){
+      counter++;
+      send.text(content.from, scripts[counter]);
+      counter++;
+      busy = false;
+    }, timeout);
+    return;
+}
+
 //play back the next word
 if(scripts[counter] === "sticker"){
   send.sticker(content.from, Math.round(Math.random() * 20));
@@ -56,13 +71,10 @@ if(scripts[counter] === "sticker"){
 }
 send.text(content.from, scripts[counter]);
 //test the next script, if it's a timeout, wait and call.
-counter++;
+counter++; //next
 var timeout;
-switch(typeof scripts[counter]){
-  case "string":
-  break;
-  case "number":
-    timeout = scripts[counter];
+if(typeof scripts[counter] == "number"){
+    timeout = scripts[counter]; //element was time
     busy = true;
     setTimeout(function(){
       counter++;
@@ -70,9 +82,9 @@ switch(typeof scripts[counter]){
       counter++;
       busy = false;
     }, timeout);
-  break;
 }
 }
+
 
 exports.handleContent = function(content){
   switch(state){
