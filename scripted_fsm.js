@@ -64,12 +64,11 @@ switch(typeof scripts[i]){
     timeout = scripts[i];
     busy = true;
     setTimeout(function(){
-      send.text(content.from, scripts[i++]);
+      send.text(content.from, scripts[++i]);
       busy = false;
     }, timeout);
   break;
 }
-
 }
 
 exports.handleContent = function(content){
