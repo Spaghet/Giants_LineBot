@@ -40,9 +40,10 @@ function handlePostRequest(req, res){
     data = JSON.parse(data.toString());
     console.log(data);
     handleJson(data);
+
+  res.writeHead(200, {"Content-type": "text/plain"});
+  res.end("");
   });
-res.writeHead(200, {"Content-type": "text/plain"});
-res.end("");
 }
 
 function handleJson(lineData){
