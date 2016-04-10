@@ -1,5 +1,6 @@
 var https = require('https');
 var request = require('request');
+var CONST = require('./const').const;
 
 const proxyUrl = process.env.FIXIE_URL || 	"http://fixie:qO8t5jn6Ahvz6ly@velodrome.usefixie.com:80";
 
@@ -9,9 +10,9 @@ function send(body){
     "url": "https://trialbot-api.line.me/v1/events",
     "headers": {
       "Content-type": "application/json; charset=UTF-8",
-      "X-Line-ChannelID": "1462997838",
-      "X-Line-ChannelSecret": "0e6392a115a2d65089479eb5334de457",
-      "X-Line-Trusted-User-With-ACL": "ua9f4a868cf921b7f84075a766320b3ca"
+      "X-Line-ChannelID": CONST.bot.channelId,
+      "X-Line-ChannelSecret": CONST.bot.channelSecret,
+      "X-Line-Trusted-User-With-ACL": CONST.bot.mid
     },
     "method": "POST",
     "body": body
@@ -30,11 +31,11 @@ function send(body){
 exports.text = function(toUser, text){
   var body = JSON.stringify({
     "to": [toUser],
-    "toChannel": 1383378250,
-    "eventType": "138311608800106203",
+    "toChannel": CONST.toChannel,
+    "eventType": CONST.eventType.singleMessage,
     "content": {
         "toType": 1,
-        "contentType": 1,
+        "contentType": CONST.contentType.text,
         "text": text
       }
   });
@@ -43,10 +44,10 @@ exports.text = function(toUser, text){
 exports.image = function(toUser, imageUrl, previewUrl){
   var body = {
   "to":[toUser],
-  "toChannel":1383378250,
-  "eventType":"138311608800106203",
+  "toChannel":CONST.toChannel,
+  "eventType":CONST.eventType.singleMessage,
   "content":{
-    "contentType":2,
+    "contentType":CONST.contentType.image,
     "toType":1,
     "originalContentUrl":imageUrl,
     "previewImageUrl":previewUrl
@@ -61,10 +62,10 @@ exports.sticker = function(toUser, stkID){
   }
   var body = {
   "to":[toUser],
-  "toChannel":1383378250,
-  "eventType":"138311608800106203",
+  "toChannel":CONST.toChannel,
+  "eventType":CONST.eventType.singleMessage,
   "content":{
-    "contentType":8,
+    "contentType":CONST.contentType.sticker,
     "toType":1,
     "contentMetadata":{
       "STKID":stkID,

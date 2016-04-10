@@ -3,6 +3,7 @@
 var http = require('http');
 var qs = require('querystring');
 var send = require('./send');
+var handleContent = require('./scripted_fsm').completeScript;
 var CONST = require('./const').const;
 
 //Lets define a port we want to listen to
@@ -52,18 +53,21 @@ function handleJson(lineData){
       handleOperation(content);
       return;
     }
-      handleMessage(content);
+      handleContent(content);
   }
 }
 
 function handleOperation(content){
   console.log(content);
 }
+
 function handleMessage(content){
   if(content.contentType === CONST.contentType.text){
     send.text(content.from, content.text);
     return;
   }else{
-    send.image(content.from, "https://pbs.twimg.com/media/Bus5_vzCQAEN4z5.jpg", "https://41.media.tumblr.com/024585fba025c9bcdde9e26fc943e9fa/tumblr_nwsj4msQIJ1uo43aqo3_250.png");
+    send.image(content.from, //user mid
+              "https://pbs.twimg.com/media/Bus5_vzCQAEN4z5.jpg", //big image
+              "https://41.media.tumblr.com/024585fba025c9bcdde9e26fc943e9fa/tumblr_nwsj4msQIJ1uo43aqo3_250.png"); //preview image
   }
-  }
+}
