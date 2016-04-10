@@ -64,8 +64,8 @@ exports.sticker = function(toUser){
     "contentType":8,
     "toType":1,
     "contentMetadata":{
-      "STKID":"3",
-      "STKPKGID":"332",
+      "STKID":"1",
+      "STKPKGID":"1",
       "STKVER":"100"
     }
   }
