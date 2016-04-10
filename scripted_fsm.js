@@ -50,25 +50,26 @@ if(busy){
 }
 var i = counter;
 counter++;
+if(scripts[i] === "sticker"){
+  send.sticker(content.from, Math.round(Math.random() * 20));
+  return;
+}
+send.text(content.from, scripts[i]);
+i++;
 var timeout;
 switch(typeof scripts[i]){
   case "string":
-    if(scripts[i] === "sticker"){
-      send.sticker(content.from, Math.round(Math.random() * 20));
-      return;
-    }
-    send.text(content.from, scripts[i]);
   break;
   case "number":
     timeout = scripts[i];
-    counter++;
     busy = true;
     setTimeout(function(){
-      send.text(content.from, scripts[counter]);
+      send.text(content.from, scripts[i++]);
       busy = false;
     }, timeout);
   break;
 }
+
 }
 
 exports.handleContent = function(content){
