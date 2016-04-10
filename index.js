@@ -62,6 +62,6 @@ function handleMessage(content){
     send.text(content.from, content.text);
     return;
   }else{
-    send.text(toUser, "Spooked Ya!");
+    send.text(content.from, "Spooked Ya!");
   }
 }
