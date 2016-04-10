@@ -52,9 +52,6 @@ if(typeof scripts[counter] === "number"){
 
 exports.curl = function(){
   if(!scripts[counter]) return;
-  if(!busy){
-    return;
-  }
   busy = false;
   play(scripts[counter]);
   counter++;
