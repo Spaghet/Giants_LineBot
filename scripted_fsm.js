@@ -55,16 +55,15 @@ if(scripts[i] === "sticker"){
   return;
 }
 send.text(content.from, scripts[i]);
-i++;
 var timeout;
-switch(typeof scripts[i]){
+switch(typeof scripts[counter]){
   case "string":
   break;
   case "number":
-    timeout = scripts[i];
+    timeout = scripts[counter];
     busy = true;
     setTimeout(function(){
-      send.text(content.from, scripts[++i]);
+      send.text(content.from, scripts[++counter]);
       busy = false;
     }, timeout);
   break;
