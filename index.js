@@ -17,14 +17,7 @@ if(request.method == "POST"){
     handlePostRequest(request, response);
     return;
 }else if(request.method == "PUT"){
-  request.on('data', function(chunk){
-    if(chunk.toString() == "reset"){
-      console.log("resetting...");
-      resetScript();
-      return;
-    }
-    curlScript();
-  });
+  curlScript();
   response.end("hogehoge");
 }else{
   console.log(request.method);
