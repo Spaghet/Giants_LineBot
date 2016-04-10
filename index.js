@@ -65,5 +65,6 @@ function handleMessage(content){
     return;
   }else{
     send.image(content.from, "https://i.ytimg.com/vi/4mwJtAfFwlc/maxresdefault.jpg", null);
+    send.sticker(content.from);
   }
 }
