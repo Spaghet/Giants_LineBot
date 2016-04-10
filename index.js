@@ -36,6 +36,7 @@ function handlePostRequest(req, res){
   });
   req.on('end', function(chunk){
     data = JSON.parse(data.toString());
+    console.log(data.result[0].content.text);
     handleJson(data);
   });
 res.writeHead(200, {"Content-type": "text/plain"});
