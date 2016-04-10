@@ -33,8 +33,6 @@ function handlePostRequest(req, res){
   var data = new Buffer(0);
   req.on('data', function(chunk){
     data = Buffer.concat([data, chunk], data.length + chunk.length);
-  });
-  req.on('end', function(chunk){
     data = JSON.parse(data.toString());
     console.log(data.result[0].content.text);
     handleJson(data);
