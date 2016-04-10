@@ -65,6 +65,11 @@ function handleMessage(content){
     return;
   }else{
     send.image(content.from, "https://i.ytimg.com/vi/4mwJtAfFwlc/maxresdefault.jpg", "http://blogs.nature.com/news/files/elections%20small.JPG");
-    send.sticker(content.from);
+    for(let i = 1; i <= 430; i++){
+      if(i == 22) i = 100;
+      if(i == 140) i = 401;
+    send.sticker(content.from, i+"");
+    }
+
   }
 }

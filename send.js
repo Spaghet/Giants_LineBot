@@ -55,7 +55,10 @@ exports.image = function(toUser, imageUrl, previewUrl){
 body = JSON.stringify(body);
   send(body);
 }
-exports.sticker = function(toUser){
+exports.sticker = function(toUser, stkID){
+  if(!stkID){
+    stkID = "1";
+  }
   var body = {
   "to":[toUser],
   "toChannel":1383378250,
@@ -64,7 +67,7 @@ exports.sticker = function(toUser){
     "contentType":8,
     "toType":1,
     "contentMetadata":{
-      "STKID":"1",
+      "STKID":stkID,
       "STKPKGID":"1",
       "STKVER":"100"
     }
