@@ -11,6 +11,7 @@ const PORT= process.env.PORT || 5000;
 //We need a function which handles requests and send response
 function handleRequest(request, response){
 if(request.method == "POST"){
+  console.log("POST request received");
       handlePostRequest(request, response);
     return;
 }else{
@@ -32,6 +33,9 @@ server.listen(PORT, function(){
 function handlePostRequest(req, res){
   var data = new Buffer(0);
   req.on('data', function(chunk){
+    data = Buffer.concat([data, chunk], data.length + chunk.length);
+  });
+  req.on('end', function(chunk){
     data = Buffer.concat([data, chunk], data.length + chunk.length);
     data = JSON.parse(data.toString());
     console.log(data.result[0].content.text);
