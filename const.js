@@ -4,7 +4,7 @@ exports.const = {
     text: 1,
     image: 2,
     video: 3,
-    audio, 4,
+    audio: 4,
     location: 7,
     sticker: 8,
     contact: 10
