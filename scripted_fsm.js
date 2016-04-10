@@ -44,47 +44,40 @@ var scripts = [
 
 var counter = 0;
 var busy = false;
+var id = "";
+
 exports.completeScript = function(content){
+  id = content.from;
+  console.log(content.from);
 if(busy){
   return;
 }
-
-//if it's a timeout, return early
-var timeout;
-if(typeof scripts[counter] == "number"){
-    timeout = scripts[counter]; //element was time
-    busy = true;
-    setTimeout(function(){
-      counter++;
-      send.text(content.from, scripts[counter]);
-      counter++;
-      busy = false;
-    }, timeout);
-    return;
-}
-
 //play back the next word
-if(scripts[counter] === "sticker"){
-  send.sticker(content.from, Math.round(Math.random() * 20));
+play(scripts[counter]);
+counter++;
+if(typeof scripts[counter] === "number"){
+  busy = true;
   counter++;
-  return;
-}
-send.text(content.from, scripts[counter]);
-//test the next script, if it's a timeout, wait and call.
-counter++; //next
-var timeout;
-if(typeof scripts[counter] == "number"){
-    timeout = scripts[counter]; //element was time
-    busy = true;
-    setTimeout(function(){
-      counter++;
-      send.text(content.from, scripts[counter]);
-      counter++;
-      busy = false;
-    }, timeout);
 }
 }
 
+exports.curl = function(){
+  busy = false;
+  play(scripts[counter]);
+  counter++;
+  if(typeof scripts[counter] === "number"){
+    busy = true;
+    counter++;
+  }
+}
+
+function play(word){
+  if(word === "sticker"){
+    send.sticker(id, Math.round(Math.random() * 20));
+    return;
+  }
+  send.text(content.from, scripts[counter]);
+}
 
 exports.handleContent = function(content){
   switch(state){
