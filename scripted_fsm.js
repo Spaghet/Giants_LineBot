@@ -48,13 +48,15 @@ exports.completeScript = function(content){
 if(busy){
   return;
 }
-var i = counter;
-counter++;
-if(scripts[i] === "sticker"){
+//play back the next word
+if(scripts[counter] === "sticker"){
   send.sticker(content.from, Math.round(Math.random() * 20));
+  counter++;
   return;
 }
-send.text(content.from, scripts[i]);
+send.text(content.from, scripts[counter]);
+//test the next script, if it's a timeout, wait and call.
+counter++;
 var timeout;
 switch(typeof scripts[counter]){
   case "string":
