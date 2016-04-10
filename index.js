@@ -1,7 +1,7 @@
 //Lets require/import the HTTP module
 var http = require('http');
 var qs = require('querystring');
-var send = require('./send_text').handle;
+var sendText = require('./send').text;
 
 //Lets define a port we want to listen to
 const PORT= process.env.PORT || 5000;
@@ -37,16 +37,28 @@ function handlePostRequest(req, res){
   });
   req.on('end', function(chunk){
     data = JSON.parse(data.toString());
-    var contentType = data.result[0].content.contentType;
-    var to = data.result[0].content.from;
-    if(contentType == 1){
-      var text = data.result[0].content.text;
-      send(to, text);
-    }else{
-      var text = "ASJKALJDKWALDKA";
-      send(to, text);
-    }
+    handleJson(data);
+  }
 res.writeHead(200, {"Content-type": "text/plain"});
 res.end("");
   });
 }
+
+function handleJson(lineData){
+  for(let i = 0; i < lineData.result.length;i++){
+    let content = lineData.result[i].content;
+    if(content.opType){
+      handleOperation(content);
+      return;
+    }
+  }
+}
+
+var contentType = data.result[0].content.contentType;
+var to = data.result[0].content.from;
+if(contentType == 1){
+  var text = data.result[0].content.text;
+  sendText(to, text);
+}else{
+  var text = "ASJKALJDKWALDKA";
+  sendText(to, text);
