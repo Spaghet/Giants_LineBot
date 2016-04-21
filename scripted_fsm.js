@@ -47,6 +47,7 @@ exports.curl = function(){
 exports.reset = function(){
   busy = false;
   counter = 0;
+  id = "udc4c94af0cf037a1bb9876e9d7023ecd";
   console.log("reset");
 };
 
