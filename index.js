@@ -1,50 +1,36 @@
-'use strict';
-//Lets require/import the HTTP module
-var http = require('http');
-var qs = require('querystring');
+"use strict";
+
+const app = require("express")();
+const bodyString = require("body");
 var send = require('./send');
 var handleContent = require('./scripted_fsm').completeScript;
 var curlScript = require('./scripted_fsm').curl;
 var resetScript = require('./scripted_fsm').reset;
 var CONST = require('./const').const;
 
-//Lets define a port we want to listen to
-const PORT= process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-//We need a function which handles requests and send response
-function handleRequest(request, response){
-if(request.method == "POST"){
-    handlePostRequest(request, response);
-    return;
-}else if(request.method == "PUT"){
-  curlScript();
-  response.end("run");
-}else{
-  console.log(request.method);
-  response.end("You didn't POST");
-}
-}
-
-//Create a server
-var server = http.createServer(handleRequest);
-
-//Lets start our server
-server.listen(PORT, function(){
-    //Callback triggered when server is successfully listening. Hurray!
-    console.log("Server listening on:", PORT);
+app.post("/", function(req, res){
+  handlePostRequest(res, res);
 });
 
-//Handle stuff
-function handlePostRequest(req, res){
-  var data = new Buffer(0);
-  req.on('data', function(chunk){
-    data = Buffer.concat([data, chunk], data.length + chunk.length);
-  });
-  req.on('end', function(chunk){
-    if(chunk){
-      data = Buffer.concat([data, chunk], data.length + chunk.length);
+app.put("/", function(req, res){
+  bodyString(req, res, function(err, body){
+    if(body == "reset"){
+      resetScript();
+    }else{
+      curlScript();
     }
-    data = JSON.parse(data.toString());
+  });
+});
+
+app.listen(PORT, function(){
+  console.log("listening on PORT: " + PORT);
+});
+
+function handlePostRequest(req, res){
+  bodyString(req, res, function(err, body){
+    var data = JSON.parse(body.toString());
     handleJson(data);
     res.writeHead(200, {"Content-type": "text/plain"});
     res.end("");
@@ -60,10 +46,6 @@ function handleJson(lineData){
     }
       handleContent(content);
   }
-}
-
-function handleOperation(content){
-  console.log(content);
 }
 
 function handleMessage(content){
