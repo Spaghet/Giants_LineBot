@@ -11,7 +11,7 @@ var CONST = require('./const').const;
 const PORT = process.env.PORT || 5000;
 
 app.post("/callback", function(req, res){
-  handlePostRequest(res, res);
+  handlePostRequest(req, res);
 });
 
 app.put("/", function(req, res){
@@ -30,6 +30,11 @@ app.listen(PORT, function(){
 
 function handlePostRequest(req, res){
   bodyString(req, res, function(err, body){
+    if(err){
+      console.log(err);
+      res.statusCode = 500;
+      res.end(err.message);
+    }
     var data = JSON.parse(body.toString());
     handleJson(data);
     res.writeHead(200, {"Content-type": "text/plain"});
