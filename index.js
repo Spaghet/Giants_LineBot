@@ -10,7 +10,7 @@ var CONST = require('./const').const;
 
 const PORT = process.env.PORT || 5000;
 
-app.post("/", function(req, res){
+app.post("/callback", function(req, res){
   handlePostRequest(res, res);
 });
 
