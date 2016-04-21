@@ -64,6 +64,7 @@ exports.curl = function(){
 exports.reset = function(){
   busy = false;
   counter = 0;
+  console.log("reset");
 };
 
 function play(word){

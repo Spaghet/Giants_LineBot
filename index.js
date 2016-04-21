@@ -16,11 +16,16 @@ app.post("/callback", function(req, res){
 
 app.put("/", function(req, res){
   bodyString(req, res, function(err, body){
+    if(err){
+      res.statusCode = 500;
+      res.end(err.message);
+    }
     if(body == "reset"){
       resetScript();
     }else{
       curlScript();
     }
+    res.end(body);
   });
 });
 
