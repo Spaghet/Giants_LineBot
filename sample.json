@@ -1,3 +1,6 @@
+//Sample API results for quick lookup
+
+//Sample json object when you receive a text message
 {"result":[
   {"content":
     {
@@ -23,6 +26,7 @@
     }
 ]}
 
+//Send to user Kumagai Yuji
 {
   "to":["ub6455048bfa2811a05ea9729bb6e0b47"],
   "toChannel":1462997838,
