@@ -10,6 +10,8 @@ var CONST = require('./const').const;
 
 const PORT = process.env.PORT || 5000;
 
+//Herokuだと自動的にhttps噛ませてくるので特別にhttpsしなくても良い
+//ここのURLに対してLINE Bot APIはリクエスト飛ばしてくる想定 (ie: https://giants_linebot.herokuapp.com:443/callback)
 app.post("/callback", function(req, res){
   handlePostRequest(req, res);
 });
@@ -29,10 +31,12 @@ app.put("/", function(req, res){
   });
 });
 
+//Start
 app.listen(PORT, function(){
   console.log("listening on PORT: " + PORT);
 });
 
+//Handlers
 function handlePostRequest(req, res){
   bodyString(req, res, function(err, body){
     if(err){
@@ -51,7 +55,7 @@ function handleJson(lineData){
   for(let i = 0; i < lineData.result.length;i++){
     let content = lineData.result[i].content;
     if(content.opType){
-      handleOperation(content);
+      handleOperation(content); //Not implemented
       return;
     }
       handleContent(content);

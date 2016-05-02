@@ -1,5 +1,6 @@
 
 exports.const = {
+  //ContentTypeの数値
   contentType: {
     text: 1,
     image: 2,
@@ -9,7 +10,9 @@ exports.const = {
     sticker: 8,
     contact: 10
   },
+  //一定
   toChannel: 1383378250,
+  //ここは各Bot APIに配られるやつなので使うアカウントごとに変わる
   bot: {
     channelId: 1462997838,
     channelSecret: "0e6392a115a2d65089479eb5334de457",
@@ -19,6 +22,7 @@ exports.const = {
     singleMessage: "138311608800106203",
     multipleMessage: "140177271400161403"
   },
+  //メッセージ以外の操作(追加/ブロックのID)
   opType: {
     add : 4,
     block: 8
